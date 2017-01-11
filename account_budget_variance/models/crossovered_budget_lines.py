@@ -15,11 +15,7 @@ class CrossoveredBudgetLines(models.Model):
         for rec in self:
             rec.variance_amount =\
                 rec.practical_amount - rec.planned_amount
-<<<<<<< HEAD
             if rec.variance_amount != 0.0:
-=======
-            if rec.variance_amount:
->>>>>>> 0da713a... Adding new module account_budget_variance
                 rec.variance_percent =\
                     (rec.variance_amount / rec.planned_amount)
 
