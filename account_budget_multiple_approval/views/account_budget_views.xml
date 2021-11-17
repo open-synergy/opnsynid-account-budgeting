@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="crossovered_budget_view_form_multiple_approval">
+            <field name="name">crossovered.budget.view.form.multiple.approval</field>
+            <field name="model">crossovered.budget</field>
+            <field name="priority">110</field>
+            <field
+                name="inherit_id"
+                ref="account_budget.crossovered_budget_view_form"
+            />
+            <field name="arch" type="xml">
+                <!-- It is necessary because using multiple approval...-->
+                <xpath
+                    expr="//button[@name='action_budget_validate']"
+                    position="replace"
+                >
+                    <button name="action_budget_validate" invisible="1" />
+                </xpath>
+                <!-- It is necessary because no need process cancel...-->
+                <xpath expr="//button[@name='action_budget_cancel']" position="replace">
+                    <button name="action_budget_cancel" invisible="1" />
+                </xpath>
+                <data>
+                    <xpath expr="//div[@class='oe_title']" position="before">
+                        <field name="need_validation" invisible="1" />
+                        <field name="approved" invisible="1" />
+                        <field name="rejected" invisible="1" />
+                        <div
+                            role="alert"
+                            class="alert alert-warning"
+                            attrs="{'invisible': ['|', '|', '|', ('approved', '=', True), ('state', 'not in', ['confirm']), ('rejected', '=', True), ('approval_ids', '=', [])]}"
+                            style="margin-bottom:0px;"
+                        >
+                            <p><i
+                                    class="fa fa-info-circle"
+                                />This Record needs to be approved.
+                                <button
+                                    name="action_approve_approval"
+                                    string="Approve"
+                                    attrs="{'invisible': [('approval_ids', '=', [])]}"
+                                    type="object"
+                                    class="oe_inline oe_button btn-success"
+                                    icon="fa-check"
+                                />
+                                <button
+                                    name="action_reject_approval"
+                                    string="Reject"
+                                    type="object"
+                                    class="btn-icon btn-danger"
+                                    icon="fa-stop"
+                                />
+                            </p>
+                        </div>
+                        <div
+                            role="alert"
+                            class="alert alert-success"
+                            attrs="{'invisible': ['|', '|', ('approved', '!=', True), ('state', 'not in', ['confirm']), ('approval_ids', '=', [])]}"
+                            style="margin-bottom:0px;"
+                        >
+                            <p><i class="fa fa-thumbs-up" /> Operation has been <b
+                                >approved</b>!</p>
+                        </div>
+                        <div
+                            role="alert"
+                            class="alert alert-danger"
+                            attrs="{'invisible': ['|', '|', ('rejected', '!=', True), ('state', 'not in', ['confirm']), ('approval_ids', '=', [])]}"
+                            style="margin-bottom:0px;"
+                        >
+                            <p><i class="fa fa-thumbs-down" /> Operation has been <b
+                                >rejected</b>.</p>
+                        </div>
+                    </xpath>
+                </data>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Approvals" name="tier_validation">
+                        <group>
+                            <field name="approval_template_id" />
+                            <field
+                                name="active_approver_partner_ids"
+                                widget="many2many_tags"
+                            />
+                        </group>
+                        <field
+                            name="approval_ids"
+                            attrs="{'invisible':[('approval_ids', '=', [])]}"
+                            nolabel="1"
+                        />
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
