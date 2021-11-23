@@ -16,20 +16,33 @@
                 <!-- It is necessary because using multiple approval...-->
                 <xpath
                     expr="//button[@name='action_budget_validate']"
-                    position="replace"
+                    position="attributes"
                 >
-                    <button name="action_budget_validate" invisible="1" />
+                    <attribute name="invisible">1</attribute>
+                    <attribute name="states" />
+                    <attribute name="groups" />
+                </xpath>
+                <xpath expr="//field[@name='state']" position="before">
+                    <button
+                        name="action_request_approval"
+                        string="Request Approval"
+                        attrs="{'invisible': [('need_validation', '!=', True)]}"
+                        type="object"
+                    />
                 </xpath>
                 <!-- It is necessary because need process reset to draft...-->
                 <xpath
                     expr="//button[@name='action_budget_draft']"
                     position="attributes"
                 >
-                    <attribute name="states">reject</attribute>
+                    <attribute name="states">cancel,reject</attribute>
                 </xpath>
                 <!-- It is necessary because no need process cancel...-->
-                <xpath expr="//button[@name='action_budget_cancel']" position="replace">
-                    <button name="action_budget_cancel" invisible="1" />
+                <xpath
+                    expr="//button[@name='action_budget_cancel']"
+                    position="attributes"
+                >
+                    <attribute name="states">draft,validate,done</attribute>
                 </xpath>
                 <data>
                     <xpath expr="//div[@class='oe_title']" position="before">
