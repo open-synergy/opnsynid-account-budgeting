@@ -20,7 +20,7 @@
 
                     <attribute
                         name="attrs"
-                    >{'invisible':['|', ('confirm_ok','=',False), ('state','!=','draft')]}</attribute>
+                    >{'invisible':[('confirm_ok','=',False)]}</attribute>
                     <attribute name="states" />
                 </xpath>
 
@@ -31,7 +31,7 @@
 
                     <attribute
                         name="attrs"
-                    >{'invisible':['|', ('approval_ok','=',False), ('state','!=','confirm')]}</attribute>
+                    >{'invisible':[('approval_ok','=',False)]}</attribute>
                     <attribute name="states" />
                 </xpath>
 
@@ -42,7 +42,7 @@
 
                     <attribute
                         name="attrs"
-                    >{'invisible':['|', ('done_ok','=',False), ('state','!=','validate')]}</attribute>
+                    >{'invisible':[('done_ok','=',False)]}</attribute>
                     <attribute name="states" />
                 </xpath>
 
@@ -53,7 +53,7 @@
 
                     <attribute
                         name="attrs"
-                    >{'invisible':['|', ('cancel_ok','=',False), ('state','not in',['confirm', 'validate'])]}</attribute>
+                    >{'invisible':[('cancel_ok','=',False)]}</attribute>
                     <attribute name="states" />
                 </xpath>
 
@@ -64,7 +64,7 @@
 
                     <attribute
                         name="attrs"
-                    >{'invisible':['|', ('restart_ok','=',False), ('state','!=','cancel')]}</attribute>
+                    >{'invisible':[('restart_ok','=',False)]}</attribute>
                     <attribute name="states" />
                 </xpath>
 
@@ -81,20 +81,6 @@
                             <field name="done_ok" />
                             <field name="cancel_ok" />
                             <field name="restart_ok" />
-                        </group>
-                    </page>
-                    <page name="log" string="Logs">
-                        <group name="group_5" colspan="4" col="3">
-                            <group name="group_log_1" colspan="4" col="3">
-                                <field name="confirm_date" string="Confirmation" />
-                                <field name="confirm_user_id" nolabel="1" />
-                                <field name="approval_date" string="Approval" />
-                                <field name="approval_user_id" nolabel="1" />
-                                <field name="done_date" string="Done" />
-                                <field name="done_user_id" nolabel="1" />
-                                <field name="cancel_date" string="Cancellation" />
-                                <field name="cancel_user_id" nolabel="1" />
-                            </group>
                         </group>
                     </page>
                 </xpath>
