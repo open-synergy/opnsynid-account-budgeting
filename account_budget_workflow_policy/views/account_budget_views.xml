@@ -31,7 +31,7 @@
 
                     <attribute
                         name="attrs"
-                    >{'invisible':[('approval_ok','=',False)]}</attribute>
+                    >{'invisible':[('validate_ok','=',False)]}</attribute>
                     <attribute name="states" />
                 </xpath>
 
@@ -68,6 +68,23 @@
                     <attribute name="states" />
                 </xpath>
 
+                <xpath
+                    expr="//button[@name='action_approve_approval']"
+                    position="attributes"
+                >
+                    <attribute
+                        name="attrs"
+                    >{'invisible': [('approve_ok','=',False)]}</attribute>
+                </xpath>
+
+                <xpath
+                    expr="//button[@name='action_reject_approval']"
+                    position="attributes"
+                >
+                    <attribute
+                        name="attrs"
+                    >{'invisible': [('reject_ok','=',False)]}</attribute>
+                </xpath>
 
                 <xpath expr="//notebook" position="inside">
                     <page string="Policies" name="policy">
@@ -77,7 +94,9 @@
                                 groups="base.group_system"
                             />
                             <field name="confirm_ok" />
-                            <field name="approval_ok" />
+                            <field name="validate_ok" />
+                            <field name="approve_ok" />
+                            <field name="reject_ok" />
                             <field name="done_ok" />
                             <field name="cancel_ok" />
                             <field name="restart_ok" />

@@ -12,6 +12,7 @@
     "installable": True,
     "depends": [
         "account_budget",
+        "account_budget_multiple_approval",
         "ssi_policy_mixin",
     ],
     "data": [

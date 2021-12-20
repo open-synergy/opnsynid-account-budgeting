@@ -18,8 +18,18 @@ class AccountBudgetWorkflowPolicy(models.Model):
         compute="_compute_policy",
     )
 
-    approval_ok = fields.Boolean(
+    validate_ok = fields.Boolean(
+        string="Can Validate",
+        compute="_compute_policy",
+    )
+
+    approve_ok = fields.Boolean(
         string="Can Approval",
+        compute="_compute_policy",
+    )
+
+    reject_ok = fields.Boolean(
+        string="Can Rejected",
         compute="_compute_policy",
     )
 
