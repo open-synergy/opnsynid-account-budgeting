@@ -3,5 +3,5 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from . import (
-    account_budget_workflow_policy,
+    crossovered_budget,
 )
