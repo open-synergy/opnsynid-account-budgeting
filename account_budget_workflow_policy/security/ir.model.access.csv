@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_crossovered_budget_workflow_policy_all,access.crossovered_budget.workflow.policy – All Users,model_crossovered_budget,,1,1,1,1

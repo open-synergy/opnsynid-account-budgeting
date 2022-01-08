@@ -4,8 +4,8 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
 <odoo>
     <data>
-        <record model="ir.ui.view" id="crossovered_budget_view_form_workflow_policy">
-            <field name="name">crossovered.budget.view.form.workflow.policy</field>
+        <record model="ir.ui.view" id="crossovered_budget_view_form">
+            <field name="name">crossovered.budget form</field>
             <field name="model">crossovered.budget</field>
             <field name="priority">110</field>
             <field
@@ -22,17 +22,6 @@
                     <attribute
                         name="attrs"
                     >{'invisible':[('confirm_ok','=',False)]}</attribute>
-                    <attribute name="states" />
-                </xpath>
-
-                <xpath
-                    expr="//button[@name='action_budget_validate']"
-                    position="attributes"
-                >
-
-                    <attribute
-                        name="attrs"
-                    >{'invisible':[('validate_ok','=',False)]}</attribute>
                     <attribute name="states" />
                 </xpath>
 
@@ -94,8 +83,12 @@
                                 name="policy_template_id"
                                 groups="base.group_system"
                             />
+                            <button
+                                name="action_reload_policy_template"
+                                type="object"
+                                string="Reload Template Policy"
+                            />
                             <field name="confirm_ok" />
-                            <field name="validate_ok" />
                             <field name="approve_ok" />
                             <field name="reject_ok" />
                             <field name="done_ok" />
