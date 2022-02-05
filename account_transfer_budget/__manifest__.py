@@ -19,6 +19,7 @@
         "ssi_state_change_constrain_mixin",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "views/account_budget_transfer_type_view.xml",
         "views/account_transfer_budget_view.xml",
     ],
