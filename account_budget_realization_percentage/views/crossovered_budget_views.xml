@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="crossovered_budget_view">
+            <field name="name">crossovered.budget - form</field>
+            <field name="model">crossovered.budget</field>
+            <field name="priority">110</field>
+            <field
+                name="inherit_id"
+                ref="account_budget.crossovered_budget_view_form"
+            />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath
+                        expr="//field[@name='crossovered_budget_line']/tree/field[@name='percentage']"
+                        position="after"
+                    >
+                        <field name="realization_percentage" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>
