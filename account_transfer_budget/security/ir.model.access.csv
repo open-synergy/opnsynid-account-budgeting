@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_transfer_budget_type_user,account.budget_transfer_type - Employee,model_account_budget_transfer_type,base.group_user,1,1,1,1
+access_account_transfer_budget_type_all,account.budget_transfer_type - All,model_account_budget_transfer_type,,1,0,0,0
+access_account_transfer_budget_user,account.transfer_budget - Employee,model_account_transfer_budget,base.group_user,1,1,1,1
+access_account_transfer_budget_all,account.transfer_budget - All,model_account_transfer_budget,,1,0,0,0

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="account_budget_transfer_type_view_search" model="ir.ui.view">
+        <field name="name">account.budget.transfer.type.search</field>
+        <field name="model">account.budget_transfer_type</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code" />
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+
+    <record id="account_budget_transfer_type_view_tree" model="ir.ui.view">
+        <field name="name">account.budget.transfer.type.tree</field>
+        <field name="model">account.budget_transfer_type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code" />
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_budget_transfer_type_view_form" model="ir.ui.view">
+        <field name="name">account.budget.transfer.type.form</field>
+        <field name="model">account.budget_transfer_type</field>
+        <field name="arch" type="xml">
+            <form>
+                <header />
+                <sheet>
+                    <div
+                        class="oe_right oe_button_box"
+                        style="width: 300px;"
+                        name="buttons"
+                    >
+                    </div>
+                    <group>
+                        <group name="left">
+                            <field name="name" />
+                            <field name="code" />
+                        </group>
+                        <group name="right">
+                            <field name="active" />
+                            <field name="allow_transfer_accross_budget" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description" nolabel="1" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_budget_transfer_type_action" model="ir.actions.act_window">
+        <field name="name">Budget Transfer Types</field>
+        <field name="res_model">account.budget_transfer_type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="account_budget_transfer_type_menu"
+        parent="account.account_management_menu"
+        action="account_budget_transfer_type_action"
+        sequence="1"
+    />
+</odoo>
